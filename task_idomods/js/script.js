@@ -25,7 +25,7 @@ const fetchProducts = () => {
             console.error("Error fetching products:", error);
             isLoading = false;
         });
-}
+};
 
 const createProductCard = (product) => {
     const card = document.createElement("div");
@@ -36,7 +36,7 @@ const createProductCard = (product) => {
 
     card.addEventListener("click", () => openPopup(product));
     productGrid.appendChild(card);
-}
+};
 
 const openPopup = (product) => {
     popupContent.innerHTML = `
@@ -45,12 +45,12 @@ const openPopup = (product) => {
             `;
     popup.style.display = "block";
     popupOverlay.style.display = "block";
-}
+};
 
 const closePopupHandler = () => {
     popup.style.display = "none";
     popupOverlay.style.display = "none";
-}
+};
 
 closePopup.addEventListener("click", closePopupHandler);
 popupOverlay.addEventListener("click", closePopupHandler);
@@ -63,12 +63,40 @@ pageSizeSelect.addEventListener("change", (e) => {
 });
 
 window.addEventListener("scroll", () => {
-    if (
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 100
-    ) {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
         fetchProducts();
     }
 });
 
 fetchProducts();
+
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.querySelector(".hamburger");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    hamburger.addEventListener("click", function() {
+        mobileMenu.classList.toggle("active");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll(".header-button");
+    const mobileMenu = document.querySelector(".mobile-menu");
+    const hamburgerButton = document.querySelector(".hamburger");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", function() {
+            const sectionId = button.id;
+            const targetSection = document.getElementById(`${sectionId}-section`);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: "smooth" });
+
+                if (mobileMenu.classList.contains("open")) {
+                    hamburgerButton.classList.toggle("open");
+                    mobileMenu.classList.toggle("open");
+                }
+            }
+        });
+    });
+});

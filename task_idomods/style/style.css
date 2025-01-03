@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .container {
     background: #f6f6f6;
     max-width: 1920px;
@@ -22,15 +26,92 @@
     min-height: 122px;
     height: 100%;
     position: relative;
-    &> :nth-child(2) {
-        text-decoration: underline;
-    }
     &> :nth-child(4) {
         font-weight: 700;
     }
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding-right: 35px;
+    z-index: 1000;
+}
+
+.hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: #ad4844;
+    border-radius: 5px;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu a {
+    background-color: #ad4844;
+    color: #ffffff;
+    padding: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+}
+
+.mobile-menu a:hover {
+    color: #ad4844;
+    text-decoration: underline;
+}
+
+.mobile-menu {
+    display: none;
+}
+
+.mobile-menu.active {
     @media screen and (max-width: 768px) {
-        flex-direction: column;
+        display: flex;
     }
+}
+
+.mobile-menu a:hover {
+    background: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .header {
+        justify-content: space-between;
+    }
+    .hamburger {
+        display: flex;
+    }
+    .header .header-button {
+        display: none;
+    }
+}
+
+.parallax {
+    background-image: url("../images/Parallax_effect.png");
+    height: 700px;
+    background-attachment: fixed;
+    @media screen and (max-width: 1200px) {
+        background-attachment: scroll;
+    }
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
 .arthrohard-label {
@@ -40,8 +121,9 @@
     height: 100%;
     margin-right: 60px;
     @media screen and (max-width: 768px) {
-        margin-right: 0px;
         margin-bottom: 10px;
+        margin-left: 20px;
+        margin-right: 60px;
     }
     &+button {
         margin-left: 80px;
@@ -66,6 +148,7 @@
     text-transform: uppercase;
     &:hover {
         cursor: pointer;
+        text-decoration: underline;
     }
     @media screen and (max-width: 768px) {
         font-size: 14px;
@@ -81,7 +164,11 @@
     max-height: 867px;
     max-width: 632.34px;
     width: 100%;
-    @media screen and (max-width: 1250px) {
+    @media screen and (max-width: 769px) {
+        max-width: 45%;
+        padding-bottom: 100px;
+    }
+    @media screen and (min-width: 769.01px) and (max-width: 1250px) {
         margin-bottom: 100px;
         max-width: 45%;
     }
@@ -94,9 +181,9 @@
     flex-direction: row;
     width: 100%;
     @media screen and (max-width: 768px) {
+        background: none;
         display: flex;
         flex-direction: column;
-        margin-bottom: 50px;
     }
     @media screen and (min-width: 768.01px) and (max-width: 1260px) {
         display: flex;
@@ -110,6 +197,9 @@
         width: 100%;
         @media screen and (max-width: 1250px) {
             max-width: 50%;
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
         }
     }
     .buy-button {
@@ -135,10 +225,7 @@
             cursor: pointer;
         }
         @media screen and (max-width: 768px) {
-            font-size: 14px;
-        }
-        @media screen and (max-width: 480px) {
-            font-size: 12px;
+            display: none;
         }
     }
     .first-distinction-text-container {
@@ -150,12 +237,18 @@
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
+        @media screen and (max-width: 1250px) {
+            text-align: center;
+        }
+        @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+            font-size: 26px;
+        }
         @media screen and (max-width: 768px) {
-            font-size: 22px;
+            font-size: 20px;
             text-align: center;
         }
         @media screen and (max-width: 480px) {
-            font-size: 20px;
+            font-size: 18px;
             text-align: center;
         }
     }
@@ -174,7 +267,7 @@
         @media screen and (max-width: 768px) {
             align-items: center;
             display: flex;
-            margin-bottom: 50px;
+            margin-bottom: 65px;
             text-align: center;
         }
     }
@@ -187,16 +280,28 @@
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-        white-space: nowrap;
         width: 100%;
+        @media screen and (max-width: 1250px) {
+            text-align: center;
+        }
         @media screen and (max-width: 768px) {
             text-align: center;
-            white-space: initial;
         }
         @media screen and (max-width: 480px) {
             font-size: 16px;
             text-align: center;
-            white-space: initial;
+        }
+    }
+    .effect-mobile-what-distinction-container {
+        @media screen and (max-width: 769px) {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+            background-size: cover;
+            height: 100%;
+            min-height: 200px;
+            width: 100%;
+        }
+        @media screen and (min-width: 769.01px) {
+            display: none;
         }
     }
 }
@@ -205,26 +310,41 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    padding-bottom: 20px;
     width: 100%;
     .distinction-header {
         align-items: center;
+        @media screen and (min-width: 1200.01px) {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+            background-size: cover;
+            min-height: 320px;
+        }
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         margin-bottom: 60px;
+        width: 100%;
         @media screen and (max-width: 768px) {
             margin-bottom: 0px;
         }
         .heading {
+            display: flex;
             font-family: Futura PT;
             font-size: 48px;
             font-weight: 450;
+            justify-content: center;
             line-height: 61.54px;
             text-align: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
             @media screen and (max-width: 480px) {
-                font-size: 22px;
+                font-size: 18px;
+            }
+            @media screen and (min-width: 480.01px) and (max-width: 768px) {
+                font-size: 20px;
+            }
+            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                font-size: 26px;
             }
         }
         .line {
@@ -250,12 +370,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-left: 20px;
-        margin-right: 20px;
-        @media screen and (max-width: 768px) {
+        padding: 0 20px;
+        @media screen and (max-width: 1200px) {
             display: flex;
             flex-direction: column;
             text-align: center;
+            white-space: nowrap;
         }
         .circle {
             align-items: center;
@@ -273,6 +393,7 @@
             }
         }
         .text-container {
+            align-items: center;
             display: flex;
             flex-direction: column;
             @media screen and (max-width: 768px) {
@@ -300,6 +421,15 @@
             text-align: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
+            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                font-size: 26px;
+            }
+            @media screen and (min-width: 768.01px) and (max-width: 768px) {
+                font-size: 20px;
+            }
+            @media screen and (max-width: 480px) {
+                font-size: 18px;
+            }
         }
         .distinction-image {
             align-items: center;
@@ -307,12 +437,101 @@
             height: 100%;
             justify-content: center;
             max-height: 290px;
+            max-width: 360px;
             opacity: 0px;
             width: 100%;
+            z-index: 2;
             @media screen and (max-width: 768px) {
                 margin-bottom: 10px;
-                max-width: 50%;
             }
+        }
+        .distinctions-container {
+            display: flex;
+            flex-direction: row;
+        }
+        .distinction-shutterstock-first-vector {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Distinction_Vector.png");
+            rotate: -7.41deg;
+            height: 192px;
+            position: absolute;
+            transform: translate(-92px, 90px);
+            width: auto;
+            z-index: 1;
+        }
+        .distinction-shuterstock-second-vector {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Distinction_Vector.png");
+            rotate: -7.41deg;
+            height: 192px;
+            position: absolute;
+            transform: translate(352px, 62px);
+            @media screen and (max-width: 400px) {
+                transform: translate(222px, 62px);
+            }
+            @media screen and (min-width: 400.01px) and (max-width: 540px) {
+                transform: translate(282px, 62px);
+            }
+            @media screen and (min-width: 540.01px) and (max-width: 650px) {
+                transform: translate(332px, 43px);
+            }
+            width: auto;
+            z-index: 1;
+        }
+        .distinction-dogs-first-vector {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Distinction_Vector.png");
+            rotate: -7.41deg;
+            height: 192px;
+            position: absolute;
+            transform: translate(-76px, 136px);
+            width: auto;
+            z-index: 1;
+        }
+        .distinction-dogs-second-vector {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Distinction_Vector.png");
+            rotate: -7.41deg;
+            height: 192px;
+            position: absolute;
+            transform: translate(346px, 43px);
+            @media screen and (max-width: 400px) {
+                transform: translate(222px, 62px);
+            }
+            @media screen and (min-width: 400.01px) and (max-width: 540px) {
+                transform: translate(282px, 43px);
+            }
+            @media screen and (min-width: 540.01px) and (max-width: 650px) {
+                transform: translate(332px, 43px);
+            }
+            width: auto;
+            z-index: 1;
+        }
+        .distinction-right-shutterstock-first-vector {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Distinction_Vector.png");
+            rotate: -7.41deg;
+            height: 192px;
+            position: absolute;
+            transform: translate(-88px, 137px);
+            width: auto;
+            z-index: 1;
+        }
+        .distinction-right-shutterstock-second-vector {
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Distinction_Vector.png");
+            rotate: -7.41deg;
+            height: 192px;
+            position: absolute;
+            transform: translate(291px, 56px);
+            @media screen and (max-width: 400px) {
+                transform: translate(222px, 62px);
+            }
+            @media screen and (min-width: 400.01px) and (max-width: 540px) {
+                transform: translate(282px, 43px);
+            }
+            @media screen and (min-width: 540.01px) and (max-width: 650px) {
+                transform: translate(332px, 43px);
+            }
+            @media screen and (min-width: 650.01px) and (max-width: 1200px) {
+                transform: translate(345px, 48px);
+            }
+            width: auto;
+            z-index: 1;
         }
         .distinction-text {
             display: flex;
@@ -325,15 +544,35 @@
             text-align: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
+            @media screen and (max-width: 400px) {
+                font-size: 16px;
+            }
+            @media screen and (min-width: 400.01px) and (max-width: 1200px) {
+                font-size: 18px;
+            }
         }
-        .distinction-text-for-circle-container {
+        .distinction-text-for-first-circle-container {
             display: flex;
             flex-direction: row;
             font-family: Futura PT;
             font-size: 20px;
             font-weight: 400;
             line-height: 25.64px;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
+            margin-right: 40px;
+            text-align: center;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+        }
+        .distinction-text-for-second-circle-container {
+            display: flex;
+            flex-direction: row;
+            font-family: Futura PT;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 25.64px;
+            margin-bottom: 80px;
+            margin-right: 102px;
             text-align: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
@@ -350,24 +589,136 @@
     }
 }
 
+.mobile-tablet-preparation-action-container {
+    @media screen and (min-width: 1200.01px) {
+        display: none;
+    }
+    @media screen and (max-width: 1200px) {
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        max-height: 675px;
+        margin-bottom: 15px;
+        .preparation-action-header {
+            align-items: center;
+            background: linear-gradient( 175.82deg, #f6f6f6 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            height: 149px;
+            justify-content: center;
+            padding-top: 5px;
+            .heading {
+                font-family: Futura PT;
+                font-size: 26px;
+                font-weight: 450;
+                line-height: 20px;
+                padding-bottom: 10px;
+                text-align: center;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                @media screen and (max-width: 768px) {
+                    font-size: 20px;
+                }
+            }
+            .line {
+                align-items: center;
+                border: solid 1px #111111;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 25px;
+                max-width: 158px;
+                width: 100%;
+            }
+        }
+        .circle-texts-container {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            font-size: 20px;
+            @media screen and (max-width: 768.01px) {
+                font-size: 18px;
+            }
+            padding-left: 50px;
+            padding-bottom: 10px;
+            .circle-text-container {
+                align-items: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                padding: 5px;
+                .circle {
+                    align-items: center;
+                    background: #ffffff;
+                    border-radius: 50%;
+                    box-shadow: 0px 1px 9px 0px #00000040;
+                    display: flex;
+                    font-weight: 700;
+                    height: 46px;
+                    justify-content: center;
+                    opacity: 0px;
+                    margin-right: 40px;
+                    margin-bottom: 10px;
+                    width: 46px;
+                }
+            }
+        }
+    }
+}
+
 .ingredients-container {
     background: #ffffff;
     height: 100%;
     margin-bottom: 60px;
     margin-top: 60px;
-    max-height: 2173px;
+    max-height: 2943px;
     max-width: 1920px;
     width: 100%;
+    @media screen and (max-width: 350px) {
+        margin-top: 0px;
+        max-height: 3943px;
+        padding-bottom: 750px;
+    }
+    @media screen and (min-width: 350.01px) and (max-width: 400px) {
+        margin-top: 0px;
+        max-height: 3943px;
+        padding-bottom: 650px;
+    }
+    @media screen and (min-width: 400.01px) and (max-width: 500px) {
+        margin-top: 0px;
+        max-height: 3943px;
+        padding-bottom: 400px;
+    }
+    @media screen and (min-width: 500.01px) and (max-width: 600px) {
+        margin-top: 0px;
+        padding-bottom: 450px;
+    }
+    @media screen and (min-width: 600.01px) and (max-width: 700px) {
+        margin-top: 0px;
+        padding-bottom: 500px;
+    }
+    @media screen and (min-width: 700.01px) and (max-width: 768px) {
+        margin-top: 0px;
+        padding-bottom: 550px;
+    }
+    @media screen and (min-width: 768.01px) and (max-width: 1199.99px) {
+        padding-bottom: 700px;
+    }
     .ingredients-header {
         align-items: center;
+        @media screen and (max-width: 1200px) {
+            background: linear-gradient( 175.82deg, #ffffff 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+            background-size: cover;
+        }
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-bottom: 40px;
-        margin-top: 20px;
+        padding-top: 20px;
         @media screen and (max-width: 768px) {
             margin-bottom: 0px;
-            padding-top: 5px;
+            padding-top: 100px;
         }
         .heading {
             font-family: Futura PT;
@@ -377,13 +728,13 @@
             text-align: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
-            @media screen and (max-width: 768px) {
+            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
                 font-size: 26px;
-                line-height: 20px;
+                line-height: 40px;
             }
-            @media screen and (max-width: 480px) {
+            @media screen and (max-width: 768px) {
                 font-size: 20px;
-                line-height: 15px;
+                line-height: 36px;
             }
         }
         .line {
@@ -397,45 +748,261 @@
         }
     }
     .ingredients-details {
+        align-items: center;
         display: flex;
         flex-direction: column;
+        height: 100%;
+        max-height: 2045px;
         width: 100%;
+        @media (min-width: 768px) {
+            .ingredients-details {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
         .ingredients-heading {
             font-family: Futura PT;
             font-size: 31px;
             font-weight: 450;
             line-height: 39.74px;
-            margin-bottom: 20px;
+            margin-bottom: 2px;
             text-align: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
-            @media screen and (max-width: 768px) {
+            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
                 font-size: 26px;
+            }
+            @media screen and (max-width: 768px) {
+                font-size: 20px;
+            }
+        }
+        .ingredients-heading-line {
+            @media screen and (max-width: 1200px) {
+                align-items: center;
+                border: solid 1px #111111;
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+                max-width: 228px;
+                width: 100%;
+            }
+            @media screen and (min-width: 1200.01px) {
+                display: none;
             }
         }
         .ingredients-containers {
             display: flex;
             flex-direction: row;
             height: 100%;
-            @media screen and (max-width: 768px) {
+            max-height: 2045px;
+            @media screen and (max-width: 1200px) {
                 display: flex;
                 flex-direction: column;
                 height: 100%;
                 text-align: center;
             }
+            @media screen and (min-width: 1700px) {
+                white-space: nowrap;
+            }
             .left-ingredients-container {
                 align-items: center;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 margin-left: 10px;
+                .mobile-tablet-ingredient-text-for-devils-claw {
+                    display: none;
+                    @media screen and (max-width: 1200px) {
+                        align-items: center;
+                        background: linear-gradient( 175.82deg, #ffffff 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+                        background-size: cover;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        width: 100%;
+                        .description {
+                            font-family: Futura PT;
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 25.64px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (max-width: 1200px) {
+                                font-size: 18px;
+                            }
+                        }
+                        .grass {
+                            background-image: url("../images/Grass.png");
+                            height: 40px;
+                            margin-top: 20px;
+                            width: 40px;
+                        }
+                        .heading {
+                            font-family: Futura PT;
+                            font-size: 48px;
+                            font-weight: 450;
+                            line-height: 61.54px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                                font-size: 26px;
+                            }
+                            @media screen and (max-width: 768px) {
+                                font-size: 20px;
+                            }
+                        }
+                        .line {
+                            align-items: center;
+                            border: solid 1px #111111;
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 20px;
+                            max-width: 268.21px;
+                            width: 100%;
+                        }
+                        .weight {
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+                .desktop-ingredient-text-for-hyaluronic-acid {
+                    @media screen and (max-width: 1200px) {
+                        display: none;
+                    }
+                    @media screen and (min-width: 1200.01px) {
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-top: 25px;
+                        padding-bottom: 25px;
+                        @media screen and (min-width: 1250px) and (max-width: 1280px) {
+                            padding-top: 180px;
+                        }
+                        .circle {
+                            align-items: center;
+                            background: #d9d9d9;
+                            border-radius: 50%;
+                            box-shadow: 0px 1px 9px 0px #00000040;
+                            display: flex;
+                            height: 46px;
+                            justify-content: center;
+                            opacity: 0px;
+                            margin-right: 15px;
+                            margin-bottom: 10px;
+                            width: 46px;
+                        }
+                    }
+                    .description {
+                        font-family: Futura PT;
+                        font-size: 20px;
+                        font-weight: 400;
+                        line-height: 25.64px;
+                        text-align: center;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                    }
+                    .heading {
+                        font-family: Futura PT;
+                        font-size: 48px;
+                        font-weight: 450;
+                        line-height: 61.54px;
+                        text-align: center;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                    }
+                    .line {
+                        align-items: center;
+                        border: solid 1px #111111;
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 20px;
+                        max-width: 268.21px;
+                        width: 100%;
+                    }
+                    .weight {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+                .mobile-tablet-ingredient-text-for-vitamin-c {
+                    display: none;
+                    @media screen and (max-width: 1200px) {
+                        align-items: center;
+                        background: linear-gradient( 175.82deg, #ffffff 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+                        background-size: cover;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        width: 100%;
+                        .description {
+                            font-family: Futura PT;
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 25.64px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (max-width: 768px) {
+                                font-size: 18px;
+                            }
+                        }
+                        .vitamin-c {
+                            background-image: url("../images//Vitamin_C.png");
+                            height: 40px;
+                            margin-top: 20px;
+                            width: 40px;
+                        }
+                        .heading {
+                            font-family: Futura PT;
+                            font-size: 48px;
+                            font-weight: 450;
+                            line-height: 61.54px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                                font-size: 26px;
+                            }
+                            @media screen and (max-width: 768px) {
+                                font-size: 20px;
+                            }
+                        }
+                        .line {
+                            align-items: center;
+                            border: solid 1px #111111;
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 20px;
+                            max-width: 268.21px;
+                            width: 100%;
+                        }
+                        .weight {
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
                 .ingredient-text {
                     align-items: center;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    @media screen and (max-width: 768px) {
+                    padding-bottom: 25px;
+                    @media screen and (max-width: 1200.01px) {
                         font-size: 12px;
+                        .biotech {
+                            background-image: url("../images/Biotech.png");
+                            height: 40px;
+                            margin-top: 20px;
+                            width: 40px;
+                        }
                     }
                     .circle {
                         align-items: center;
@@ -449,6 +1016,9 @@
                         margin-right: 15px;
                         margin-bottom: 10px;
                         width: 46px;
+                        @media screen and (max-width: 1200px) {
+                            display: none;
+                        }
                     }
                     .description {
                         font-family: Futura PT;
@@ -458,7 +1028,7 @@
                         text-align: center;
                         text-underline-position: from-font;
                         text-decoration-skip-ink: none;
-                        @media screen and (max-width: 768px) {
+                        @media screen and (max-width: 1200px) {
                             font-size: 18px;
                         }
                     }
@@ -470,8 +1040,11 @@
                         text-align: center;
                         text-underline-position: from-font;
                         text-decoration-skip-ink: none;
-                        @media screen and (max-width: 768px) {
+                        @media screen and (min-width: 768.01px) and (max-width: 1200px) {
                             font-size: 26px;
+                        }
+                        @media screen and (max-width: 768px) {
+                            font-size: 20px;
                         }
                     }
                     .line {
@@ -480,7 +1053,6 @@
                         display: flex;
                         justify-content: center;
                         margin-bottom: 20px;
-                        max-width: 268.21px;
                         width: 100%;
                     }
                     .weight {
@@ -498,36 +1070,84 @@
                 position: relative;
                 height: auto;
                 width: 100%;
+                @media screen and (min-width: 1200.01px) and (max-width: 1700px) {
+                    width: auto;
+                }
                 .package {
                     height: auto;
                     width: auto;
                     position: relative;
-                    @media screen and (min-width: 768.01px) and (max-width: 1250px) {
-                        max-width: 100%;
+                    @media screen and (max-width: 1199.99px) {
+                        display: none;
                     }
-                    @media screen and (max-width: 768px) {
-                        max-width: 20%;
+                    @media screen and (min-width: 1200px) and (max-width: 1249.99px) {
+                        max-width: 90%;
+                    }
+                }
+                .ingredients-buy-button {
+                    background-color: #ad4844;
+                    bottom: 250px;
+                    color: #f6f6f6;
+                    cursor: pointer;
+                    font-family: Futura PT;
+                    font-size: 20px;
+                    font-weight: 700;
+                    height: auto;
+                    line-height: 25.64px;
+                    max-width: 171px;
+                    padding: 10px 40px;
+                    position: absolute;
+                    text-align: center;
+                    text-underline-position: from-font;
+                    text-decoration-skip-ink: none;
+                    transform: translate(-18px, -510px);
+                    width: 100%;
+                    z-index: 2;
+                    @media screen and (max-width: 1199.99px) {
+                        display: none;
+                    }
+                    @media screen and (min-width: 1200px) and (max-width: 1249.99px) {
+                        bottom: 50px;
                     }
                 }
                 .dog {
                     position: absolute;
-                    bottom: 35vh;
+                    bottom: 0;
+                    right: 47px;
                     height: auto;
                     width: 100%;
                     z-index: 1;
-                    @media screen and (max-width: 768px) {
-                        bottom: 8vh;
-                        max-width: 20%;
+                    @media screen and (max-width: 1199.99px) {
+                        display: none;
                     }
-                    @media screen and (min-width: 768.01px) and (max-width: 880px) {
+                }
+            }
+            .mobile-tablet-images-container {
+                @media screen and (min-width: 1200px) {
+                    display: none;
+                }
+                @media screen and (max-width: 1199.99px) {
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                }
+                .package {
+                    @media screen and (max-width: 1199.99px) {
+                        height: auto;
                         position: relative;
-                        transform: translate(0%, -65%);
-                        max-width: 100%;
+                        max-width: 30%;
+                        width: auto;
                     }
-                    @media screen and (min-width: 880.01px) and (max-width: 1000px) {
+                }
+                .dog {
+                    @media screen and (max-width: 1199.99px) {
                         position: relative;
-                        transform: translate(0%, -65%);
-                        max-width: 100%;
+                        transform: translate(0%, -153%);
+                        height: auto;
+                        max-width: 35%;
+                        width: 100%;
+                        z-index: 1;
                     }
                 }
             }
@@ -535,25 +1155,93 @@
                 align-items: center;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 margin-right: 10px;
-                .ingredient-text {
-                    align-items: center;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    .circle {
+                @media screen and (min-width: 1250px) and (max-width: 1270px) {
+                    margin-right: 0px;
+                }
+                .ingredient-text-for-syrup {
+                    @media screen and (min-width: 1200.01px) {
+                        display: none;
+                    }
+                    @media screen and (max-width: 1200px) {
                         align-items: center;
-                        background: #d9d9d9;
-                        border-radius: 50%;
-                        box-shadow: 0px 1px 9px 0px #00000040;
                         display: flex;
-                        height: 46px;
+                        flex-direction: column;
                         justify-content: center;
-                        opacity: 0px;
-                        margin-right: 15px;
-                        margin-bottom: 10px;
-                        width: 46px;
+                        padding-top: 10px;
+                        .opacity {
+                            background-image: url("../images/Opacity.png");
+                            height: 40px;
+                            width: 40px;
+                        }
+                        .description {
+                            font-family: Futura PT;
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 25.64px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (max-width: 1200px) {
+                                font-size: 18px;
+                            }
+                        }
+                        .heading {
+                            font-family: Futura PT;
+                            font-size: 48px;
+                            font-weight: 450;
+                            line-height: 61.54px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                                font-size: 26px;
+                            }
+                            @media screen and (max-width: 768px) {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+                .desktop-ingredient-text-for-devils-claw {
+                    @media screen and (max-width: 1200px) {
+                        display: none;
+                    }
+                    @media screen and (min-width: 1200.01px) {
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-bottom: 250px;
+                        @media screen and (min-width: 1200.01px) and (max-width: 1250px) {
+                            padding-bottom: 230px;
+                        }
+                        @media screen and (min-width: 1250px) and (max-width: 1300px) {
+                            padding-bottom: 75px;
+                        }
+                        @media screen and (min-width: 1300.01px) and (max-width: 1400px) {
+                            padding-bottom: 210px;
+                        }
+                        @media screen and (min-width: 1400.01px) and (max-width: 1645px) {
+                            padding-bottom: 210px;
+                        }
+                        @media screen and (min-width: 1645.01px) {
+                            padding-bottom: 130px;
+                        }
+                        .circle {
+                            align-items: center;
+                            background: #d9d9d9;
+                            border-radius: 50%;
+                            box-shadow: 0px 1px 9px 0px #00000040;
+                            display: flex;
+                            height: 46px;
+                            justify-content: center;
+                            opacity: 0px;
+                            margin-right: 15px;
+                            margin-bottom: 10px;
+                            width: 46px;
+                        }
                     }
                     .description {
                         font-family: Futura PT;
@@ -563,7 +1251,7 @@
                         text-align: center;
                         text-underline-position: from-font;
                         text-decoration-skip-ink: none;
-                        @media screen and (max-width: 768px) {
+                        @media screen and (max-width: 1200px) {
                             font-size: 18px;
                         }
                     }
@@ -575,8 +1263,218 @@
                         text-align: center;
                         text-underline-position: from-font;
                         text-decoration-skip-ink: none;
-                        @media screen and (max-width: 768px) {
+                        @media screen and (min-width: 768.01px) and (max-width: 1200px) {
                             font-size: 26px;
+                        }
+                        @media screen and (max-width: 768px) {
+                            font-size: 20px;
+                        }
+                    }
+                    .line {
+                        align-items: center;
+                        border: solid 1px #111111;
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 20px;
+                        max-width: 268.21px;
+                        width: 100%;
+                    }
+                    .weight {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+                .desktop-ingredient-text-for-vitamin-c {
+                    @media screen and (max-width: 1200px) {
+                        display: none;
+                    }
+                    @media screen and (min-width: 1200.01px) {
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        padding-bottom: 100px;
+                        @media screen and (min-width: 1400px) and (max-width: 1600px) {
+                            padding-bottom: 80px;
+                        }
+                        @media screen and (min-width: 1600.01px) {
+                            padding-bottom: 30px;
+                        }
+                        .circle {
+                            align-items: center;
+                            background: #d9d9d9;
+                            border-radius: 50%;
+                            box-shadow: 0px 1px 9px 0px #00000040;
+                            display: flex;
+                            height: 46px;
+                            justify-content: center;
+                            opacity: 0px;
+                            margin-right: 15px;
+                            margin-bottom: 10px;
+                            width: 46px;
+                        }
+                    }
+                    .description {
+                        font-family: Futura PT;
+                        font-size: 20px;
+                        font-weight: 400;
+                        line-height: 25.64px;
+                        text-align: center;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                        @media screen and (max-width: 1200px) {
+                            font-size: 18px;
+                        }
+                    }
+                    .heading {
+                        font-family: Futura PT;
+                        font-size: 48px;
+                        font-weight: 450;
+                        line-height: 61.54px;
+                        text-align: center;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                        @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                            font-size: 26px;
+                        }
+                        @media screen and (max-width: 768px) {
+                            font-size: 20px;
+                        }
+                    }
+                    .line {
+                        align-items: center;
+                        border: solid 1px #111111;
+                        display: flex;
+                        justify-content: center;
+                        margin-bottom: 20px;
+                        max-width: 268.21px;
+                        width: 100%;
+                    }
+                    .weight {
+                        align-items: center;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+                .mobile-tablet-ingredient-text-for-hyaluronic-acid {
+                    display: none;
+                    @media screen and (max-width: 1200px) {
+                        align-items: center;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        .description {
+                            font-family: Futura PT;
+                            font-size: 20px;
+                            font-weight: 400;
+                            line-height: 25.64px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (max-width: 1200px) {
+                                font-size: 18px;
+                            }
+                        }
+                        .science {
+                            background-image: url("../images/Science.png");
+                            height: 80px;
+                            margin-top: 20px;
+                            width: 80px;
+                        }
+                        .heading {
+                            font-family: Futura PT;
+                            font-size: 48px;
+                            font-weight: 450;
+                            line-height: 61.54px;
+                            text-align: center;
+                            text-underline-position: from-font;
+                            text-decoration-skip-ink: none;
+                            @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                                font-size: 26px;
+                            }
+                            @media screen and (max-width: 768px) {
+                                font-size: 20px;
+                            }
+                        }
+                        .line {
+                            align-items: center;
+                            border: solid 1px #111111;
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 20px;
+                            max-width: 268.21px;
+                            width: 100%;
+                        }
+                        .weight {
+                            align-items: center;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
+                .ingredient-text {
+                    align-items: center;
+                    @media screen and (max-width: 1200px) {
+                        background: linear-gradient( 175.82deg, #ffffff 0.91%, rgba(0, 0, 0, 0) 80.51%), url("../images/Effects.png") no-repeat center;
+                        background-size: cover;
+                    }
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    padding-bottom: 25px;
+                    width: 100%;
+                    @media screen and (max-width: 768px) {
+                        .circle {
+                            display: none;
+                        }
+                        .msm-image {
+                            background-image: url("../images/MSM_Image.png");
+                            height: 30px;
+                            margin-top: 20px;
+                            width: 30px;
+                        }
+                    }
+                    @media screen and (min-width: 768.01px) {
+                        .circle {
+                            align-items: center;
+                            background: #d9d9d9;
+                            border-radius: 50%;
+                            box-shadow: 0px 1px 9px 0px #00000040;
+                            display: flex;
+                            height: 46px;
+                            justify-content: center;
+                            opacity: 0px;
+                            margin-right: 15px;
+                            margin-bottom: 10px;
+                            width: 46px;
+                        }
+                    }
+                    .description {
+                        font-family: Futura PT;
+                        font-size: 20px;
+                        font-weight: 400;
+                        line-height: 25.64px;
+                        text-align: center;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                        @media screen and (max-width: 1200px) {
+                            font-size: 18px;
+                        }
+                    }
+                    .heading {
+                        font-family: Futura PT;
+                        font-size: 48px;
+                        font-weight: 450;
+                        line-height: 61.54px;
+                        text-align: center;
+                        text-underline-position: from-font;
+                        text-decoration-skip-ink: none;
+                        @media screen and (min-width: 768.01px) and (max-width: 1200px) {
+                            font-size: 26px;
+                        }
+                        @media screen and (max-width: 768px) {
+                            font-size: 20px;
                         }
                     }
                     .line {
@@ -611,26 +1509,42 @@
     .product-grid {
         display: grid;
         grid-template-columns: repeat(4, 280px);
-        gap: 10px;
-        @media screen and (max-width: 1200px) {
-            grid-template-columns: repeat(2, 280px);
+        gap: 30px;
+        @media screen and (max-width: 400px) {
+            grid-template-columns: repeat(1, 180px);
         }
-        @media screen and (max-width: 768px) {
-            grid-template-columns: repeat(1, 280px);
+        @media screen and (min-width: 400.01px) and (max-width: 650px) {
+            grid-template-columns: repeat(2, 180px);
+        }
+        @media screen and (min-width: 650.01px) and (max-width: 1250px) {
+            grid-template-columns: repeat(2, 280px);
         }
     }
     .product-card {
+        align-items: center;
         background-color: #bebebe;
         border: 1px solid #ccc;
         border-radius: 5px;
+        display: flex;
         height: 100%;
+        justify-content: center;
         min-height: 301px;
         min-width: 280px;
-        text-align: center;
         cursor: pointer;
         transition: box-shadow 0.3s;
-        text-align: center;
         width: 100%;
+        h3 {
+            @media screen and (max-width: 1200px) {
+                align-items: center;
+                display: flex;
+                font-size: 31px;
+                justify-content: center;
+            }
+        }
+        @media screen and (max-width: 1200px) {
+            min-height: 105px;
+            min-width: 105px;
+        }
     }
     .product-card:hover {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -684,24 +1598,33 @@
         max-height: 46px;
         max-width: 368px;
         width: 100%;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+            text-align-last: center;
+        }
         .products-count {
             max-width: 241px;
             text-align: center;
             width: 100%;
         }
         #pageSize {
-            background: #ad4844;
+            appearance: none;
+            background: #ad4844 url("../images/Select_arrow.png") no-repeat scroll calc(68%) center/10px auto;
             color: #ffffff;
             font-family: Futura PT;
             font-size: 20px;
             font-weight: 450;
             line-height: 25.64px;
             max-width: 127px;
-            padding-right: 10px;
-            text-align: left;
+            text-align: center;
+            text-align-last: center;
             text-underline-position: from-font;
             text-decoration-skip-ink: none;
             width: 100%;
+            @media screen and (max-width: 768px) {
+                background: #ad4844 url("../images/Select_arrow.png") no-repeat scroll calc(56%) center/10px auto;
+                max-width: 100%;
+            }
             &>option {
                 background: #ad4844;
                 color: #eeeeee;
@@ -710,9 +1633,12 @@
                 font-size: 20px;
                 font-weight: 700;
                 line-height: 25.64px;
-                text-align: left;
+                text-align: center;
                 text-underline-position: from-font;
                 text-decoration-skip-ink: none;
+                @media screen and (max-width: 768px) {
+                    text-align: center;
+                }
             }
             &>option:hover {
                 cursor: pointer;
